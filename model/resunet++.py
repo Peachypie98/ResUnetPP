@@ -15,11 +15,11 @@ class ResBlock(nn.Module):
         
         if self.encoder:
             self.conv1 = nn.Conv2d(in_channels=self.in_channels,
-                                out_channels=self.out_channels, 
-                                kernel_size=self.kernel, 
-                                stride=self.stride, 
-                                padding=1, 
-                                bias=self.bias)
+                                   out_channels=self.out_channels, 
+                                   kernel_size=self.kernel, 
+                                   stride=self.stride, 
+                                   padding=1, 
+                                   bias=self.bias)
             self.conv2 = nn.Conv2d(in_channels=self.out_channels,
                                    out_channels=self.out_channels, 
                                    kernel_size=self.kernel, 
@@ -46,10 +46,11 @@ class ResBlock(nn.Module):
                                 padding=1,
                                 bias=self.bias)
             self.input_skip = nn.Conv2d(in_channels=self.in_channels, 
-                                    out_channels=self.out_channels, 
-                                    kernel_size=1, 
-                                    stride=1, 
-                                    padding=0)
+                                        out_channels=self.out_channels, 
+                                        kernel_size=1, 
+                                        stride=1, 
+                                        padding=0,
+                                        bias=self.bias)
 
         if first_block:
             self.bn1 = nn.BatchNorm2d(self.out_channels)
@@ -148,9 +149,9 @@ class ASPP(nn.Module):
 class SelfAttention(nn.Module):
     def __init__(self, in_channels, out_channels, ratio):
         super(SelfAttention, self).__init__()
-        self.in_channels=in_channels
-        self.out_channels=out_channels
-        self.ratio=ratio
+        self.in_channels = in_channels
+        self.out_channels = out_channels
+        self.ratio = ratio
         self.key   = nn.Conv2d(in_channels=self.in_channels, out_channels=self.in_channels//self.ratio, kernel_size=1, bias=False)
         self.query = nn.Conv2d(in_channels=self.in_channels, out_channels=self.in_channels//self.ratio, kernel_size=1, bias=False)
         self.value = nn.Conv2d(in_channels=self.in_channels, out_channels=self.in_channels//self.ratio, kernel_size=1, bias=False)
@@ -178,9 +179,9 @@ class SqueezeExcite(nn.Module):
 
         self.squeeze = nn.AdaptiveAvgPool2d(1)
         self.excite = nn.Sequential(
-            nn.Linear(in_features=self.channels, out_features=self.channels//r, bias=True),
+            nn.Linear(in_features=self.channels, out_features=self.channels//self.r, bias=True),
             nn.ReLU(inplace=True),
-            nn.Linear(in_features=self.channels//r, out_features=self.channels, bias=True),
+            nn.Linear(in_features=self.channels//self.r, out_features=self.channels, bias=True),
             nn.Sigmoid()
         )
         
