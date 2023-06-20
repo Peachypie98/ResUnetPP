@@ -24,7 +24,7 @@ Squeeze and Excitation network boosts the representative power of the network by
 In ASPP, the contextual information is captured at various scales, and many parallel astrous convolutions with different rates in the input feature map are fused. In the proposed architecutre, ASPP acts acts a bridge between encoder and decoder.
 
 * Attention Units  
-The attention mechanism is mostly popular in NLP task. It gives attention to the subset of its input. The attention mechanism determines which parts of the network require more attention in the neural network. The main advantage of the attention mechanism is that they are simple, can be apploed to any input size, enhance the quality of features that boosts the results.
+The attention mechanism is mostly popular in NLP task. It gives attention to the subset of its input. The attention mechanism determines which parts of the network require more attention in the neural network. The main advantage of the attention mechanism is that they are simple, can be applied to any input size, enhance the quality of features that boosts the results.
 
 ### Blocks Configurations 
 | Block | Configuration |
