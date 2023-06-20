@@ -44,5 +44,5 @@ These are the environments used to test the model:
 * PyTorch 2.0
 * V100 32GB
 
-More detailed information about ResUnet++ can be seen using the link down below:
-[https://arxiv.org/abs/1911.07067][df1]
+More detailed information about ResUnet++ can be seen using the link down below:  
+[https://arxiv.org/abs/1911.07067](https://arxiv.org/abs/1911.07067)
