@@ -155,7 +155,7 @@ class SelfAttention(nn.Module):
         self.key   = nn.Conv2d(in_channels=self.in_channels, out_channels=self.in_channels//self.ratio, kernel_size=1, bias=False)
         self.query = nn.Conv2d(in_channels=self.in_channels, out_channels=self.in_channels//self.ratio, kernel_size=1, bias=False)
         self.value = nn.Conv2d(in_channels=self.in_channels, out_channels=self.in_channels//self.ratio, kernel_size=1, bias=False)
-        self.attention_conv = nn.Conv2d(in_channels=self.in_channels//8, out_channels=self.out_channels, kernel_size=1, bias=False)
+        self.attention_conv = nn.Conv2d(in_channels=self.in_channels//self.ratio, out_channels=self.out_channels, kernel_size=1, bias=False)
 
     def forward(self, x):
         key = self.key(x)
@@ -208,7 +208,7 @@ class ResUnetPP(nn.Module):
         self.se3 = SqueezeExcite(channels=64, r=8)
 
         # Bridge
-        self.aspp1 = ASPP(in_channels=128, out_channels=256, dilation=[1,6,12,18])
+        self.aspp1 = ASPP(in_channels=128, out_channels=128*2, dilation=[1,6,12,18])
 
         # Decoder
         self.attention1 = SelfAttention(in_channels=256, out_channels=256, ratio=8)
@@ -224,8 +224,8 @@ class ResUnetPP(nn.Module):
         self.decoder_block3 = ResBlock(in_channels=96+16, out_channels=56, kernel=3, stride=1, first_block=False, bias=False, encoder=False)
 
         # Classifier
-        self.aspp2 = ASPP(in_channels=56, out_channels=29, dilation=[1,6,12,18])
-        self.out = nn.Conv2d(in_channels=29, out_channels=self.class_channel, kernel_size=1)
+        self.aspp2 = ASPP(in_channels=56, out_channels=56*2, dilation=[1,6,12,18])
+        self.out = nn.Conv2d(in_channels=56*2, out_channels=self.class_channel, kernel_size=1)
 
     def forward(self, x):
         # Encoder
