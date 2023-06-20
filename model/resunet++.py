@@ -13,7 +13,7 @@ class ResBlock(nn.Module):
         self.bias = bias
         self.encoder = encoder
         
-        if self.encoder: # ENCODER
+        if self.encoder:
             self.conv1 = nn.Conv2d(in_channels=self.in_channels,
                                 out_channels=self.out_channels, 
                                 kernel_size=self.kernel, 
@@ -32,7 +32,7 @@ class ResBlock(nn.Module):
                                         stride=self.stride, 
                                         padding=0,
                                         bias=self.bias)
-        else: # DECODER
+        else:
             self.conv1 = nn.Conv2d(in_channels=self.in_channels,
                                 out_channels=self.out_channels, 
                                 kernel_size=self.kernel, 
@@ -222,12 +222,12 @@ class ResUnetPP(nn.Module):
         self.upsample3 = F.interpolate
         self.decoder_block3 = ResBlock(in_channels=96+16, out_channels=56, kernel=3, stride=1, first_block=False, bias=False, encoder=False)
 
-        # classifier
+        # Classifier
         self.aspp2 = ASPP(in_channels=56, out_channels=29, dilation=[1,6,12,18])
         self.out = nn.Conv2d(in_channels=29, out_channels=self.class_channel, kernel_size=1)
 
     def forward(self, x):
-        # encoder
+        # Encoder
         a = x = self.encoder_block1(x) 
         x = self.se1(x)                
         b = x = self.encoder_block2(x)
@@ -236,10 +236,10 @@ class ResUnetPP(nn.Module):
         x = self.se3(x)
         d = x = self.encoder_block4(x) 
 
-        # bridge
+        # Bridge
         x = self.aspp1(x)
 
-        # decoder
+        # Decoder
         x = self.attention1(x) 
         x = self.upsample1(x, scale_factor=2, mode='bilinear', align_corners=True) 
         x = torch.cat((c, x), dim=1) 
@@ -255,7 +255,7 @@ class ResUnetPP(nn.Module):
         x = torch.cat((a, x), dim=1)
         x = self.decoder_block3(x) 
 
-        # classifier
+        # Classifier
         x = self.aspp2(x)
         x = self.out(x)
         return x
