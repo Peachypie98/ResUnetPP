@@ -29,7 +29,7 @@ The attention mechanism is mostly popular in NLP task. It gives attention to the
 ## Blocks Configurations 
 | Block | Configuration |
 | ------ | ------ |
-| Conv2D Encoder | Kernel=3; Stride=2,1; Padding=1; Bias=False|
+| Conv2D Encoder | Kernel=3; Stride=2,1; Padding=1; Bias=False |
 | Conv2D Decoder | Kernel=3; Stride=1, Padding=1; Bias=False |
 | Conv2D Output | Kernel=1; Stride=1, Padding=0; Bias=False |
 | Skip Connection | Kernel=1; Stride=1, Padding=0; Bias=False |
@@ -43,6 +43,30 @@ These are the environments used to test the model:
 * Python 3.8
 * PyTorch 2.0
 * V100 32GB
+
+=======
+## Model Script File
+<details>
+  <summary>Pre-configured parameters:</summary>  
+  
+  | Name | Parameters |
+  | ---- | -------- |
+  | In Channels | 3 |
+  | Encoders Out Channels | 16,32,64,128 |
+  | Class Channels | 29 |
+  | Squeeze Exitation Ratio | 8 |
+  | Attention Ratio | 8 |
+  | Dilation Rates | 1,6,12,18 |
+  | Bias | False |
+
+  - [x] [resunet++(default)](model/resunet++.py)
+</details>
+
+<details>
+  <summary>User-defined parameters:</summary>
+  
+  - [x] [resunet++(user)](model/resunet++_user.py)
+</details>
 
 ---
 More detailed information about ResUnet++ can be seen using the link down below:  
