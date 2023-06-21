@@ -13,7 +13,7 @@ Accurate computer-aided polyp detection and segmentation during colonoscopy exam
 
 ResUnet++ architecture is based on the Deep Residual U-Net, which is an architecture that uses the strength of deep residual learning and U-Net. The Proposed ResUnet++ architecture take advantage of the residual blocks, the squeeze and excitation block, ASPP and the attention block.
 
-### Model Short Explanation
+## Model Short Explanation
 * Residual Units  
 Training a deep neural network with an increasing depth can improve accuracy. However, it can hamper training process and cause degradation problem. To address this problem, ResUnet uses full pre-activation residual units that helps to propagate information using skip connections, improving the design of the neural network.
 
@@ -26,7 +26,7 @@ In ASPP, the contextual information is captured at various scales, and many para
 * Attention Units  
 The attention mechanism is mostly popular in NLP task. It gives attention to the subset of its input. The attention mechanism determines which parts of the network require more attention in the neural network. The main advantage of the attention mechanism is that they are simple, can be applied to any input size, enhance the quality of features that boosts the results.
 
-### Blocks Configurations 
+## Blocks Configurations 
 | Block | Configuration |
 | ------ | ------ |
 | Conv2D Encoder | Kernel=3; Stride=2,1; Padding=1; Bias=False |
@@ -44,10 +44,10 @@ These are the environments used to test the model:
 * PyTorch 2.0
 * V100 32GB
 
-## Demo
+=======
+## Model Script File
 <details>
   <summary>Pre-configured parameters:</summary>  
-
   
   | Name | Parameters |
   | ---- | -------- |
@@ -68,5 +68,6 @@ These are the environments used to test the model:
   - [x] [resunet++(user)](model/resunet++_user.py)
 </details>
 
-More detailed information about ResUnet++ can be seen using the link down below:
-[https://arxiv.org/abs/1911.07067][df1]
+---
+More detailed information about ResUnet++ can be seen using the link down below:  
+[https://arxiv.org/abs/1911.07067](https://arxiv.org/abs/1911.07067)
