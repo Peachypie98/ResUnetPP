@@ -44,7 +44,6 @@ These are the environments used to test the model:
 * PyTorch 2.0
 * V100 32GB
 
-=======
 ## Model Script File
 <details>
   <summary>Pre-configured parameters:</summary>  
@@ -59,12 +58,29 @@ These are the environments used to test the model:
   | Dilation Rates | 1,6,12,18 |
   | Bias | False |
 
+  To use default parameters:  
+  Change the number of class channels to your specific task!
+  ```
+  model = ResUnetPP(class_channel=29)
+  ```
+
   - [x] [resunet++(default)](model/resunet++.py)
 </details>
 
 <details>
   <summary>User-defined parameters:</summary>
-  
+
+  To use user-defined parameters, you need to insert information from the list below:
+  * In Channels
+  * Encoders Out Channels
+  * Class Channels
+  * Squeeze Exitation Ratio
+  * Attention Ratio
+  * Dilation Rates
+  * Bias
+  ```
+  model = ResUnetPP(in_channels: int, encoder_out_channels: List[int], class_channels: int, se_ratio: int, attention_ratio: int, dilation: List[int], bias: bool)
+  ```
   - [x] [resunet++(user)](model/resunet++_user.py)
 </details>
 
