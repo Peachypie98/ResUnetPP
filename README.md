@@ -38,6 +38,28 @@ The attention mechanism is mostly popular in NLP task. It gives attention to the
 | Attention | Non Local Network Self-Attention |
 | Upsampling | Interpolate Bilinear |
 
+## Evaluations
+All models had been trained with the configurations and tested with 100 datasets.
+* Epochs: 120
+* Learning Rate: 1e-4
+* Weight Decay: 1e-2
+* Loss: Focal Dice
+* Optimizer: AdamW
+* Data Augmentations:
+    * CropNonEmptyMaskIfExist
+    * VerticalFlip
+    * HorizontalFlip
+    * Sharpen
+    * ElasticTransformation
+      
+| Model | Dice | mIoU | Recall | Precision
+| ----- | ---- | ---- | ------ | -------- |
+| ResUnet++ (Thesis) | 0.8133 | 0.7927 | 0.7064 | 0.8774 |
+| Unet (Thesis) | 0.7147 | 0.4334 | 0.6306 | 0.9222 |
+| ResUnet++  | 0.8445 | 0.7312 | 0.8211 | 0.8755 |
+| DeepLabV3+ | 0.8010 | 0.6687 | 0.7683 | 0.8458 |
+| UNet | 0.8584 | 0.7533 | 0.8246 | 0.8993 |
+
 ## Environments
 These are the environments used to test the model:
 * Python 3.8
