@@ -39,7 +39,7 @@ The attention mechanism is mostly popular in NLP task. It gives attention to the
 | Upsampling | Interpolate Bilinear |
 
 ## Evaluations
-All models had been trained with the configurations and tested with 100 datasets.
+All models had been trained with the same configurations and tested with 100 datasets.
 * Epochs: 120
 * Learning Rate: 1e-4
 * Weight Decay: 1e-2
