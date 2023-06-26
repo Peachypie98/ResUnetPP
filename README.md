@@ -33,9 +33,9 @@ The attention mechanism is mostly popular in NLP task. It gives attention to the
 | Conv2D Decoder | Kernel=3; Stride=1, Padding=1; Bias=False |
 | Conv2D Output | Kernel=1; Stride=1, Padding=0; Bias=False |
 | Skip Connection | Kernel=1; Stride=1, Padding=0; Bias=False |
-| Squeeze & Excite | Ratio of 8 |
+| Squeeze & Excite | Ratio=8 |
 | ASPP | Kernel=3; Stride=1; Padding=0,6,12,18; Dilation=1,6,12,18; Bias=False |
-| Attention | Non Local Network Self-Attention |
+| Attention | Non Local Block Self-Attention |
 | Upsampling | Interpolate Bilinear |
 
 ## Evaluations
@@ -59,6 +59,10 @@ All models had been trained with the configurations and tested with 100 datasets
 | ResUnet++  | 0.8445 | 0.7312 | 0.8211 | 0.8755 |
 | DeepLabV3+ | 0.8010 | 0.6687 | 0.7683 | 0.8458 |
 | UNet | 0.8584 | 0.7533 | 0.8246 | 0.8993 |
+
+Result 1             |  Result 2
+:-------------------------:|:-------------------------:
+![](results/output5.png)  |  ![](results/output1.png)
 
 ## Environments
 These are the environments used to test the model:
